@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="app_name_tbd">App name Tbd</string>
+    <string name="main_menu">Main menu</string>
+</resources>
