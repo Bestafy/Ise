@@ -1,39 +1,64 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AlertDialog;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
+import java.util.ArrayList;
 
-public abstract class StartANewPlan extends AppCompatActivity implements main_menu {
+public class StartANewPlan extends AppCompatActivity {
+    private ArrayList<String> items;
+    private ArrayAdapter<String> itemsAdapter;
+    private ListView listView;
 
-    private static final String TAG ="activity" ;
-
+    @SuppressLint("WrongViewCast")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daily_routine_planner);
+        setContentView(R.layout.activity_main);
 
+        listView = findViewById(R.id.ListView);
+        Button btn = findViewById(R.id.imageButton);
+
+        btn.setOnClickListener(this::additem);
+        items = new ArrayList<>();
+        itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,items);
+        listView.setAdapter(itemsAdapter);
+        setupListViewListener();
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
+
+    private void setupListViewListener() {
+        listView.setOnItemLongClickListener((adapterView, view, i, l) -> {
+            Context context = getApplicationContext();
+            Toast.makeText(context, "Item has been removed", Toast.LENGTH_LONG).show();
+            items.remove(i);
+            itemsAdapter.notifyDataSetChanged();
+            return true;
+        });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_add_task:
-                Log.d(TAG, "Add a new task");
-                return true;
+    private void additem(View view) {
+        EditText input = findViewById(R.id.editText2);
+        String itemText = input.getText().toString();
 
-            default:
-                return super.onOptionsItemSelected(item);
+
+
+        if(!(itemText.equals(""))){
+            itemsAdapter.add(itemText);
+            input.setText("");
+
         }
-    }}
+        else {
+            Toast.makeText(getApplicationContext(), "please enter text", Toast.LENGTH_LONG).show();
+        }
+
+    }
+}
