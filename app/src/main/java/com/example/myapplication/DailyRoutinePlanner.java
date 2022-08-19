@@ -33,12 +33,12 @@ public class DailyRoutinePlanner extends AppCompatActivity implements View.OnCli
                 startActivity(intent);
                 break;
             case R.id.imageButton6:
-                Intent intent2 = new Intent (DailyRoutinePlanner.this,ViewTodaysPlan.class);
+                Intent intent2 = new Intent (DailyRoutinePlanner.this,CheckTodaysProgress.class);
                 startActivity(intent2);
                 break;
 
             case R.id.imageButton7:
-                Intent intent3 = new Intent (DailyRoutinePlanner.this,EditTodaysPlan.class);
+                Intent intent3 = new Intent (DailyRoutinePlanner.this,FILLER.class);
                 startActivity(intent3);
                 break;}
     }

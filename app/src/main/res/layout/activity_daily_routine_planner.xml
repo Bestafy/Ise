@@ -67,10 +67,10 @@
         app:srcCompat="@drawable/buttonimg" />
 
     <TextView
-        android:id="@+id/ViewTodaysPlan"
+        android:id="@+id/CheckTodaysPlan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Today's Plan?"
+        android:text="Check Todays Progress"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -94,12 +94,12 @@
         app:srcCompat="@drawable/buttonimg" />
 
     <TextView
-        android:id="@+id/ChangeTodaysPlan"
+        android:id="@+id/FILLER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change Todays Plan"
         android:textColor="@color/white"
         android:textSize="20dp"
+        android:text="FILLER"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton7"
         app:layout_constraintEnd_toEndOf="@+id/imageButton7"
